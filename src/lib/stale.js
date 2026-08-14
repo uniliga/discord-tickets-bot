@@ -54,7 +54,7 @@ module.exports = async function handleStaleTickets(client, staleInterval) {
 						await client.tickets.finallyClose(ticket.id, $);
 						closed++;
 					}
-				} else if (guild.staleAfter != null && Date.now() - (ticket.lastMessageAt || ticket.createdAt) >= guild.staleAfter) {
+				} else if (guild.staleAfter !== null && Date.now() - (ticket.lastMessageAt || ticket.createdAt) >= guild.staleAfter) {
 					// set as stale
 					/** @type {import("discord.js").TextChannel} */
 					const channel = await client.channels.fetch(ticket.id);
